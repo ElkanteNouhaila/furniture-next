@@ -1,5 +1,8 @@
 // header & footer
 import './ui/global.css'
+import Header from './ui/header';
+import Footer from './ui/footer';
+import { lusitana } from './ui/fonts';
 
 export default function RootLayout({
     children,
@@ -8,11 +11,17 @@ export default function RootLayout({
   }) {
     return (
         <html lang="en">
-            <body className='bg-white text-gray-900'>
-                {children}
-            </body>
+          <head>
+            <title>Furniture Store</title>
+            <meta name="description" content="Explore our furniture collection" />
+            <link rel="icon" href="/favicon.ico" />
+          </head>
+          <body className={lusitana.className}>
+            <Header />
+            {children}
+            <Footer />            
+          </body>
         </html>
     );
   }
 
-  
