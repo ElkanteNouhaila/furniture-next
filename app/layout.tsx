@@ -16,12 +16,13 @@ export default function RootLayout({
             <meta name="description" content="Explore our furniture collection" />
             <link rel="icon" href="/favicon.ico" />
           </head>
-          <body className={lusitana.className}>
+          <body className={`flex flex-col min-h-screen ${lusitana.className}`}>
             <Header />
-            {children}
+            <main className="flex-1">{children}</main>
             <Footer />            
           </body>
         </html>
     );
   }
+
 
