@@ -10,7 +10,7 @@ export default function ProductsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {Object.entries(categories).map(([slug, category]) => (
           <Link key={slug} href={`/products/${slug}`}>
-            <div className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer">
+            <div className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer text-center">
               <Image
                 src={category.image}
                 alt={category.name}

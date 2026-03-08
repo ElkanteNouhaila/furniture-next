@@ -16,13 +16,13 @@ export default function CategoryPage() {
   return (
     <main className="p-6 ">
       <h1 className="text-3xl font-bold mb-6">{category}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
         {categoryProducts.map((product) => (
           <Link
             key={product.id}
             href={`/products/${category}/${product.id}`}
           >
-            <div className="border p-4 rounded cursor-pointer hover:shadow-lg">
+            <div className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer text-center">
               <Image
                 src={product.image}
                 alt={product.name}
