@@ -19,7 +19,6 @@ export default function ProductCard({ slug, product }: ProductCardProps) {
           className="rounded"
         />
         <h2 className="mt-3 text-xl font-semibold">{product.name}</h2>
-        <p className="text-gray-600">{product.price} MAD</p>
       </div>
     </Link>
   );

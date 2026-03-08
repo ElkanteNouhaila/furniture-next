@@ -2,7 +2,6 @@ export type Product = {
   id: string;
   name: string;
   category: string;
-  price: number;
   image: string;
   description: string;
 };
@@ -31,7 +30,6 @@ export const products: Record<string, Product> = {
     id: "1",
     name: "Modern Sofa",
     category: "Sofas",
-    price: 0,
     image: "/products/test.jpeg",
     description: "A comfortable modern sofa."
   },
@@ -39,7 +37,6 @@ export const products: Record<string, Product> = {
     id: "2",
     name: "Wooden Bed",
     category: "Beds",
-    price: 0,
     image: "/products/test.jpeg",
     description: "A sturdy wooden bed."
   },
@@ -47,7 +44,6 @@ export const products: Record<string, Product> = {
     id: "3",
     name: "Dining Table",
     category: "Tables",
-    price: 0,
     image: "/products/test.jpeg",
     description: "A sleek dining table."
   },
@@ -55,7 +51,6 @@ export const products: Record<string, Product> = {
     id: "4",
     name: "Office Chair",
     category: "Chairs",
-    price: 0,
     image: "/products/test.jpeg",
     description: "A comfortable office chair."
   },
@@ -63,7 +58,6 @@ export const products: Record<string, Product> = {
     id: "5",
     name: "Dining sets",
     category: "Chairs",
-    price: 0,
     image: "/products/test.jpeg",
     description: "A comfortable dinging chairs."
   },
@@ -71,7 +65,6 @@ export const products: Record<string, Product> = {
     id: "6",
     name: "Bed",
     category: "Beds",
-    price: 0,
     image: "/products/test.jpeg",
     description: "confortable bed ."
   },
@@ -79,7 +72,6 @@ export const products: Record<string, Product> = {
     id: "7",
     name: "Sofa",
     category: "Sofas",
-    price: 0,
     image: "/products/test.jpeg",
     description: "A comfortable office sofa."
   },
@@ -87,7 +79,6 @@ export const products: Record<string, Product> = {
     id: "8",
     name: "Office Table",
     category: "Tables",
-    price: 0,
     image: "/products/test.jpeg",
     description: "Table."
   }

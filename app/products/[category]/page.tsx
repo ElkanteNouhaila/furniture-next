@@ -30,7 +30,6 @@ export default function CategoryPage() {
                 height={200}
               />
               <h2 className="mt-2 font-semibold">{product.name}</h2>
-              <p>{product.price} MAD</p>
             </div>
           </Link>
         ))}

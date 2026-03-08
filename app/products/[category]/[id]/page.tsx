@@ -42,7 +42,6 @@ export default async function ProductPage({
       />
 
       <p>{product.description}</p>
-      <p className="mt-2 text-gray-600">{product.price} MAD</p>
     </main>
   );
 }
