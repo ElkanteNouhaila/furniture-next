@@ -12,7 +12,7 @@ export default function RootLayout({
     return (
         <html lang="en">
           <head>
-            <title>Furniture Store</title>
+            <title>Luxury Touch</title>
             <meta name="description" content="Explore our furniture collection" />
             <link rel="icon" href="/favicon.ico" />
           </head>
