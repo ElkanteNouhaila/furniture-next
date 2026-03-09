@@ -12,19 +12,31 @@ export default async function ProductPage({
   if (!product) return <p>Product not found</p>;
 
   return (
-    <main className="p-6 flex justify-center">
-      <div className="max-w-3xl w-full text-center">
-        <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+    <main className="p-8 flex justify-center">
+      <div className="max-w-5xl w-full grid md:grid-cols-2 gap-10">
 
-        <Image
-          src={product.image}
-          alt={product.name}
-          width={500}
-          height={300}
-          className="rounded mb-4 mx-auto"
-        />
+        <div className="flex justify-center">
+          <Image
+            src={product.image}
+            alt={product.name}
+            width={500}
+            height={400}
+            className="rounded-lg"
+          />
+        </div>
 
-        <p className="text-gray-600">{product.description}</p>
+        <div>
+          <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+
+
+          <p className="text-gray-600 mb-6">
+            {product.description}
+          </p>
+
+      
+        </div>
+
+
       </div>
     </main>
   );
