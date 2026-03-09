@@ -32,7 +32,6 @@ export default async function ProductPage({
           <p className="text-gray-600 mb-6">
             {product.description}
           </p>
-
       
         </div>
 
