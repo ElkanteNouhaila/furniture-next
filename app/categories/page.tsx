@@ -11,7 +11,7 @@ export default function ProductsPage() {
         {Object.entries(categories).map(([slug, category]) => (
           <Link 
             key={slug} 
-            href={`/products/${slug}`}
+            href={`/categories/${slug}`}
           >
             <div className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer text-center">
               <Image

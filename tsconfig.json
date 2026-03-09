@@ -23,6 +23,7 @@
       "@/*": ["./*"]
     }
   },
+  
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -32,5 +33,6 @@
     "scripts/seed.js",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  
 }

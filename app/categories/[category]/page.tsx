@@ -20,7 +20,7 @@ export default function CategoryPage() {
         {categoryProducts.map((product) => (
           <Link
             key={product.id}
-            href={`/products/${category}/${product.id}`}
+            href={`/categories/${category}/${product.id}`}
           >
             <div className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer text-center">
               <Image
