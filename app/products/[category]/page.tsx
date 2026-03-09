@@ -28,8 +28,9 @@ export default function CategoryPage() {
                 alt={product.name}
                 width={300}
                 height={200}
+                className="rounded"
               />
-              <h2 className="mt-2 font-semibold">{product.name}</h2>
+              <h2 className="mt-3 text-xl font-semibold">{product.name}</h2>
             </div>
           </Link>
         ))}
