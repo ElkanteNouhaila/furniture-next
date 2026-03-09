@@ -1,40 +1,5 @@
 // import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 // import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-// "use client";
-
-// import { useForm } from "react-hook-form";
-// import { Input } from "@/components/ui/input";
-// import { Textarea } from "@/components/ui/textarea";
-// import { Button } from "@/components/ui/button";
-
-// type FormData = {
-//   name: string;
-//   email: string;
-//   message: string;
-// };
-
-// export default function ContactPage() {
-//   const { register, handleSubmit, reset } = useForm<FormData>();
-
-//   const onSubmit = (data: FormData) => {
-//     console.log("Form submitted:", data);
-//     alert("Message sent!");
-//     reset();
-//   };
-
-//   return (
-//     <main className="p-8 max-w-3xl mx-auto">
-//       <h1 className="text-3xl font-bold mb-6 text-center">Contact Us</h1>
-
-//       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-//         <Input placeholder="Name" {...register("name", { required: true })} />
-//         <Input placeholder="Email" {...register("email", { required: true })} />
-//         <Textarea placeholder="Message" {...register("message", { required: true })} />
-//         <Button type="submit">Send</Button>
-//       </form>
-//     </main>
-//   );
-// }
 
 // export default function ContactPage() {
 //   return (
@@ -98,6 +63,8 @@
 import { useForm } from "react-hook-form";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
+
 
 type FormData = {
   name: string;
@@ -109,9 +76,18 @@ export default function ContactPage() {
   const { register, handleSubmit, reset } = useForm<FormData>();
 
   const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
-    alert("Message sent!");
-    reset();
+    emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        data,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!      
+      ).then(() => {
+        alert("Message sent!");
+        reset();
+      }).catch((err) => {
+        alert("Error sending message");
+        console.error(err);
+      });
   };
 
   return (
