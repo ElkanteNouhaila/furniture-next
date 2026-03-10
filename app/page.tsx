@@ -96,7 +96,7 @@ export function AboutSection() {
                 </p>
                 <Link
                     href="/about"
-                    className="inline-block bg-stone-600 text-white px-6 py-3 rounded transform transition-transform duration-300 ease-in-out hover:scale-105 hover:bg-stone-700 cursor-pointer"
+                    className="inline-block bg-stone-600 text-white px-6 py-3 rounded-lg transform transition-transform duration-300 ease-in-out hover:scale-105 hover:bg-stone-700 cursor-pointer"
                 >
                     Read More
                 </Link>
