@@ -1,7 +1,7 @@
 // header & footer
 import './ui/global.css'
-import Header from './ui/header';
-import Footer from './ui/footer';
+import Header from './components/header';
+import Footer from './components/footer';
 import { lusitana } from './ui/fonts';
 
 export default function RootLayout({children,}: {children: React.ReactNode;}) {

@@ -1,25 +1,16 @@
 //home page
 import Link from "next/link";
 import Image from "next/image";
+import Hero from "./components/hero";
+
 
 export default function HomePage() {
   return (
-    <main className="max-w-6xl mx-auto p-8">
-
-      {/* Hero Section */}
-        <section className="text-center py-16">
-            <h1 className="text-5xl font-bold mb-4">Make your space truly yours</h1>
-            <p className="text-gray-500 mb-6 italic">By El Kante</p>
-            <Link
-                href="/categories"
-                className="inline-block bg-stone-600 text-white px-6 py-3 rounded-lg hover:bg-stone-800 transition hover:scale-105 cursor-pointer"
-            >
-                View Products
-            </Link>
-        </section>
+    <>
+      <Hero/>
 
         {/* Why Choose Us */}
-        <section className="bg-stone-100 py-16">
+        <section className="w-full bg-stone-100 py-16">
             <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6 text-center">
                 <div>✔ High Quality Materials</div>
                 <div>✔ Modern Designs</div>
@@ -27,6 +18,7 @@ export default function HomePage() {
                 <div>✔ Fast Delivery</div>
             </div>
         </section>
+      <main className="max-w-6xl mx-auto p-8">
 
         {/* Categories Section */}
         <section className="max-w-6xl mx-auto px-8 py-16">
@@ -61,8 +53,8 @@ export default function HomePage() {
 
         {/* About Section */}
         <AboutSection />
-      
-    </main>
+      </main>
+    </>
   );
 }
 
