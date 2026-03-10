@@ -125,27 +125,37 @@ export default function ContactPage() {
         <div className="flex-1 flex flex-col gap-6 text-lg">
           <a
             href="tel:+212644072535"
-            className="flex items-center gap-3 hover:text-stone-400"
+            className="flex items-center gap-3 hover:text-stone-400 hover:underline transition"
           >
             <FiPhone size={22} /> +212 644 072 535
           </a>
 
           <a
             href="mailto:nouhailaelkante2@gmail.com"
-            className="flex items-center gap-3 hover:text-stone-400"
+            className="flex items-center gap-3 hover:text-stone-400 hover:underline transition"
           >
             <FiMail size={22} /> nouhailaelkante2@gmail.com
           </a>
 
-          <div className="flex items-center gap-3">
-            <FiMapPin size={22} /> Casablanca, Morocco
-          </div>
+          <a
+            href="https://maps.app.goo.gl/7g8cEBHjws7zfUnV8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 hover:text-stone-400 hover:underline transition"
+          >
+            <FiMapPin size={22} />
+            <span>
+              Casablanca, Morocco
+              <span className="text-sm text-gray-500 ml-2">(View on map)</span>
+            </span>          
+          </a>
+         
 
           <a
             href="https://www.instagram.com/elkante_mohamed"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 hover:text-pink-700"
+            className="flex items-center gap-3 hover:text-pink-700 hover:underline transition"
           >
             <FaInstagram size={22} /> Instagram
           </a>
@@ -154,7 +164,7 @@ export default function ContactPage() {
             href="https://wa.me/212644072535"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 hover:text-green-700"
+            className="flex items-center gap-3 hover:text-green-700 hover:underline transition"
           >
             <FaWhatsapp size={22} /> WhatsApp
           </a>
