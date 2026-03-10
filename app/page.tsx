@@ -12,7 +12,7 @@ export default function HomePage() {
         <p className="text-gray-500 mb-6 italic">By El Kante</p>
         <Link
           href="/categories"
-          className="inline-block bg-stone-600 text-white px-6 py-3 rounded-lg hover:bg-stone-800 transition"
+          className="inline-block bg-stone-600 text-white px-6 py-3 rounded-lg hover:bg-stone-800 transition hover:scale-105 cursor-pointer"
         >
           View Products
         </Link>
@@ -34,27 +34,27 @@ export default function HomePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           <Link
             href="/categories/sofas"
-            className="border rounded-lg p-4 hover:shadow-lg transition text-center"
+            className="border rounded-lg p-4 bg-stone-600 text-white hover:shadow-lg hover:bg-stone-800 transition text-center hover:scale-105 cursor-pointer"
           >
             Sofas
           </Link>
           <Link
             href="/categories/beds"
-            className="border rounded-lg p-4 hover:shadow-lg transition text-center"
+            className="border rounded-lg p-4 bg-stone-600 text-white hover:shadow-lg hover:bg-stone-800 transition text-center hover:scale-105 cursor-pointer"
           >
             Beds
           </Link>
           <Link
-            href="/categories/curtains"
-            className="border rounded-lg p-4 hover:shadow-lg transition text-center"
+            href="/categories/tables"
+            className="border rounded-lg p-4 bg-stone-600 text-white hover:shadow-lg hover:bg-stone-800 transition text-center hover:scale-105 cursor-pointe"
           >
-            Curtains
+            Tables
           </Link>
           <Link
-            href="/categories/blinds"
-            className="border rounded-lg p-4 hover:shadow-lg transition text-center"
+            href="/categories/chairs"
+            className="border rounded-lg p-4 bg-stone-600 text-white hover:shadow-lg hover:bg-stone-800 transition text-center hover:scale-105 cursor-pointe"
           >
-            Blinds
+            Chairs
           </Link>
         </div>
       </section>
@@ -96,8 +96,7 @@ export function AboutSection() {
           </p>
           <Link
             href="/about"
-            className="bg-stone-600 text-white px-6 py-3 rounded hover:bg-stone-700 transition"
-          >
+            className="bg-stone-600 text-white px-6 py-3 rounded hover:bg-stone-700 transition transform hover:scale-105 cursor-pointer"          >
             Read More
           </Link>
         </div>
