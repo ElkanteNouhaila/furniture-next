@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Playfair_Display, Poppins } from "next/font/google";
+import { useState } from "react";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -16,17 +17,18 @@ const poppins = Poppins({
 
 export default function Header() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white backdrop-blur-md border-b border-border">
-      <div className="container mx-auto flex items-center justify-between h-16">
+      <div className="container mx-auto flex items-center justify-between h-16 px-4">
 
         <Link href="/" className={`${playfair.className} text-2xl font-semibold`}>
           Luxury<span className="text-[#b58742]">Touch</span>
         </Link>
 
+        {/* Desktop Nav */}
         <nav className={`hidden md:flex items-center gap-8 text-lg ${poppins.className}`}>
-
           <Link
             href="/"
             className={`hover:text-[#b58742] ${
@@ -62,9 +64,63 @@ export default function Header() {
           >
             ABOUT
           </Link>
-
         </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          ☰
+        </button>
       </div>
+
+      {/* Mobile Nav */}
+      {isOpen && (
+        <nav className={`md:hidden bg-white border-t border-border ${poppins.className}`}>
+          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+            <Link
+              href="/"
+              className={`hover:text-[#b58742] ${
+                pathname === "/" ? "text-[#b58742]" : ""
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              HOME
+            </Link>
+
+            <Link
+              href="/categories"
+              className={`hover:text-[#b58742] ${
+                pathname === "/categories" ? "text-[#b58742]" : ""
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              PRODUCTS
+            </Link>
+
+            <Link
+              href="/contact"
+              className={`hover:text-[#b58742] ${
+                pathname === "/contact" ? "text-[#b58742]" : ""
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              CONTACT
+            </Link>
+
+            <Link
+              href="/about"
+              className={`hover:text-[#b58742] ${
+                pathname === "/about" ? "text-[#b58742]" : ""
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              ABOUT
+            </Link>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
