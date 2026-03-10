@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -45,7 +45,9 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-2">Links</h3>
           <Link href="/" className="hover:text-stone-300 hover:underline transition">Home</Link> |{" "}
           <Link href="/categories" className="hover:text-stone-300 hover:underline transition">Categories</Link> |{" "}
-          <Link href="/contact" className="hover:text-stone-300 hover:underline transition">Contact</Link>
+          <Link href="/contact" className="hover:text-stone-300 hover:underline transition">Contact</Link> |{" "}
+          <Link href="/About" className="hover:text-stone-300 hover:underline transition">About</Link>
+
         </div>
 
       </div>
@@ -58,8 +60,12 @@ export default function Footer() {
         <a href="https://wa.me/212644072535" target="_blank"   rel="noopener noreferrer">
           <FaWhatsapp className="hover:text-green-700"/>
         </a>
-      </div>
 
+        <a href="https://www.facebook.com/share/17KHZ943Ak/" target="_blank"   rel="noopener noreferrer">
+          <FaFacebook className="hover:text-blue-600"/>
+        </a>
+  
+      </div>
       <p className="text-sm text-stone-300 mt-6 text-center">
         &copy; {new Date().getFullYear()} Luxury Touch. All rights reserved.
       </p>

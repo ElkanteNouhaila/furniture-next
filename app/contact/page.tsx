@@ -62,7 +62,7 @@
 
 import { useForm } from "react-hook-form";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaFacebook  } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
 
@@ -167,6 +167,15 @@ export default function ContactPage() {
             className="flex items-center gap-3 hover:text-green-700 hover:underline transition"
           >
             <FaWhatsapp size={22} /> WhatsApp
+          </a>
+
+          <a
+            href="https://www.facebook.com/share/17KHZ943Ak/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 hover:text-blue-600 hover:underline transition"
+          >
+            <FaFacebook size={22} /> Facebook
           </a>
         </div>
       </div>
