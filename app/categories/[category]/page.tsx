@@ -1,9 +1,8 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
 import { products } from "@/app/lib/products";
+import ProductCard from "@/app/components/ProductCard";
 
 export default function CategoryPage() {
   const params = useParams();
@@ -14,35 +13,45 @@ export default function CategoryPage() {
     (p) => p.category.toLowerCase() === categorySlug?.toLowerCase()
   );
 
-  if (!categoryProducts.length) return <p>No products in this category</p>;
+  if (!categoryProducts.length) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-2xl text-gray-500 mb-4">No products found in this category</p>
+          <a href="/categories" className="text-[#b58742] hover:underline">
+            ← Back to categories
+          </a>
+        </div>
+      </main>
+    );
+  }
 
   // Use the first product's category for proper display name
   const displayName = categoryProducts[0]?.category || categorySlug;
+  const displayNameText = (displayName ?? "").toString();
 
   return (
-    <main className="p-6">
-      {/* Display with proper capitalization */}
-      <h1 className="text-3xl font-bold mb-6">{displayName}</h1>
+    <main className="min-h-screen bg-gradient-to-b from-stone-50 to-white">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-stone-700 to-stone-900 text-white py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-2">{displayName}</h1>
+          <p className="text-stone-200">Explore our premium collection of {displayNameText.toLowerCase()}</p>
+        </div>
+      </section>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {categoryProducts.map((product) => (
-          <Link
-            key={product.id}
-            href={`/categories/${categorySlug}/${product.id}`}
-          >
-            <div className="border rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer text-center">
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={300}
-                height={200}
-                className="rounded"
-              />
-              <h2 className="mt-3 text-xl font-semibold">{product.name}</h2>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {/* Products Grid */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {categoryProducts.map((product) => (
+            <ProductCard 
+              key={product.id}
+              slug={`${categorySlug}/${product.id}`}
+              product={product}
+            />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
