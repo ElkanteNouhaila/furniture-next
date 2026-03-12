@@ -9,7 +9,7 @@ type ProductCardProps = {
 
 export default function ProductCard({ slug, product }: ProductCardProps) {
   return (
-    <Link href={`/products/${slug}`}>
+    <Link href={`/categories/${slug}`}>
       <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer h-full flex flex-col">
         
         {/* Image Container */}
