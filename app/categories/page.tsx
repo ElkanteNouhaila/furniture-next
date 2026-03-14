@@ -41,12 +41,7 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen bg-stone-50">
 
-      {/* ── Announcement Bar ───────────────────────────────────────────── */}
-      <div className="bg-gradient-to-r from-stone-800 via-[#b58742] to-stone-800 text-white text-center py-2.5 text-sm font-medium tracking-wide">
-        🎁 Free shipping on orders over $75 &nbsp;·&nbsp; Use code{" "}
-        <span className="underline underline-offset-2 font-bold">LUXE15</span>{" "}
-        for 15% off
-      </div>
+      
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
