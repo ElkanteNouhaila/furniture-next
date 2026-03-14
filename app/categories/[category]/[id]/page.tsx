@@ -189,6 +189,8 @@ import {
   FiZap,
 } from "react-icons/fi";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { useCart } from "@/app/context/cartContext";
+
 
 // ─── Star Renderer ───────────────────────────────────────────────────────────
 function StarRating({ rating }: { rating: number }) {
@@ -227,6 +229,8 @@ export default function ProductPage({
 }) {
   const { id, category } = React.use(params);
   const product = products[id];
+  const { addToCart } = useCart();
+
 
   const [qty, setQty] = useState(1);
   const [wishlisted, setWishlisted] = useState(false);
@@ -443,16 +447,24 @@ export default function ProductPage({
 
               <div className="flex gap-3">
                 {/* Primary CTA */}
-                <button className="group flex-1 relative overflow-hidden bg-stone-900 hover:bg-[#b58742] text-white py-4 px-6 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 transition-all duration-300 shadow-lg hover:shadow-[#b58742]/30 hover:shadow-xl">
+                {/* <button className="group flex-1 relative overflow-hidden bg-stone-900 hover:bg-[#b58742] text-white py-4 px-6 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 transition-all duration-300 shadow-lg hover:shadow-[#b58742]/30 hover:shadow-xl">
                   <FiShoppingCart size={20} className="transition-transform group-hover:rotate-12" />
                   Add to Cart
-                </button>
+                </button> */}
+                                <button
+  onClick={() => addToCart(product, qty)}
+  className="group flex-1 relative overflow-hidden bg-stone-900 hover:bg-[#b58742] text-white py-4 px-6 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 transition-all duration-300 shadow-lg hover:shadow-[#b58742]/30 hover:shadow-xl"
+>
+  <FiShoppingCart size={20} className="transition-transform group-hover:rotate-12" />
+  Add to Cart
+</button>
 
                 {/* Buy Now */}
                 <button className="flex-1 bg-gradient-to-r from-[#b58742] to-amber-500 hover:from-amber-600 hover:to-[#b58742] text-white py-4 px-6 rounded-2xl font-bold text-base flex items-center justify-center gap-2.5 transition-all duration-300 shadow-lg hover:shadow-amber-400/30 hover:shadow-xl">
                   <FiZap size={20} />
                   Buy Now
                 </button>
+
 
                 {/* Share */}
                 <button className="w-14 h-14 flex items-center justify-center rounded-2xl border-2 border-stone-200 hover:border-[#b58742] hover:text-[#b58742] text-stone-500 transition-all duration-200 bg-white shadow-sm">

@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { Product } from "@/app/lib/products";
 
-type CartItem = Product & { quantity: number };
+export type CartItem = Product & { quantity: number };
 
 type CartContextType = {
   cart: CartItem[];
@@ -12,7 +12,7 @@ type CartContextType = {
   clearCart: () => void;
 };
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
