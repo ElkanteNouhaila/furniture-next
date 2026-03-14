@@ -64,105 +64,71 @@ export default function ProductsPage() {
           </p>
         </div>
 
-                {/* ── Category Grid ──────────────────────────────────────────────── */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-24">
-        {categoryList.map(([slug, category], index) => {
-          const productArray = Object.values(products); 
-          const productCount = productArray.filter(p => p.category === slug).length;
-          return(
+        {/* ── Category Grid ──────────────────────────────────────────────── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-24">
+          {categoryList.map(([slug, category], index) => {
+            const productArray = Object.values(products); 
+            const productCount = productArray.filter(p => p.category === slug).length;
+            return(
 
-            <Link key={slug} href={`/categories/${slug}`} className="group block">
+              <Link key={slug} href={`/categories/${slug}`} className="group block">
 
-              <div className="relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-stone-100">
+                <div className="relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-stone-100">
 
-                {/* Image Container */}
-                <div className="relative h-64 overflow-hidden">
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  {/* Image Container */}
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
 
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-stone-900/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-stone-900/10 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
 
-                  {/* Category Number Badge */}
-                  <div className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white text-xs font-bold">
-                    {String(index + 1).padStart(2, "0")}
+                    {/* Category Number Badge */}
+                    <div className="absolute top-4 left-4 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white text-xs font-bold">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    {/* Arrow Icon — appears on hover */}
+                    <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#b58742] flex items-center justify-center text-white shadow-lg opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                      <FiArrowRight size={16} />
+                    </div>
+
+                    {/* Bottom text overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h2 className="text-xl font-extrabold text-white leading-tight drop-shadow-md">
+                        {category.name}
+                      </h2>
+                      <p className="text-white/70 text-xs mt-1 font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        Explore collection →
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Arrow Icon — appears on hover */}
-                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#b58742] flex items-center justify-center text-white shadow-lg opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                    <FiArrowRight size={16} />
+                  {/* Card Footer */}
+                  <div className="px-5 py-4 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-bold text-stone-800 capitalize">
+                        {category.name}
+                      </p>
+                      <p className="text-xs text-stone-400 mt-0.5">
+                        {productCount} products
+                      </p>
+
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-stone-100 group-hover:bg-[#b58742] flex items-center justify-center text-stone-500 group-hover:text-white transition-all duration-300">
+                      <FiArrowRight size={14} />
+                    </div>
                   </div>
 
-                  {/* Bottom text overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h2 className="text-xl font-extrabold text-white leading-tight drop-shadow-md">
-                      {category.name}
-                    </h2>
-                    <p className="text-white/70 text-xs mt-1 font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                      Explore collection →
-                    </p>
-                  </div>
                 </div>
-
-                {/* Card Footer */}
-                <div className="px-5 py-4 flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-bold text-stone-800 capitalize">
-                      {category.name}
-                    </p>
-                    <p className="text-xs text-stone-400 mt-0.5">
-                      {productCount} products
-                    </p>
-
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-stone-100 group-hover:bg-[#b58742] flex items-center justify-center text-stone-500 group-hover:text-white transition-all duration-300">
-                    <FiArrowRight size={14} />
-                  </div>
-                </div>
-
-              </div>
-            </Link>
-          );
-})}
-
-          
+              </Link>
+            );
+          })} 
         </div>
-
-        {/* ── Bottom Banner ──────────────────────────────────────────────── */}
-        <div className="mb-16 rounded-3xl overflow-hidden bg-gradient-to-r from-stone-900 to-stone-800 p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <p className="text-[#b58742] text-sm font-semibold uppercase tracking-widest mb-2">
-              Premium Quality
-            </p>
-            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
-              Crafted for your <br className="hidden md:block" />
-              <span className="text-[#b58742]">lifestyle</span>
-            </h3>
-            <p className="text-stone-400 mt-3 text-sm max-w-md leading-relaxed">
-              Every piece in our collection is thoughtfully designed to blend
-              aesthetics with functionality — built to last a lifetime.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-            <Link
-              href="/categories"
-              className="bg-[#b58742] hover:bg-amber-500 text-white px-8 py-4 rounded-2xl font-bold text-sm transition-colors shadow-lg shadow-amber-900/30 whitespace-nowrap"
-            >
-              Shop Now
-            </Link>
-            <Link
-              href="/"
-              className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-sm transition-colors border border-white/10 whitespace-nowrap"
-            >
-              Learn More
-            </Link>
-          </div>
-        </div>
-
       </div>
     </main>
   );
