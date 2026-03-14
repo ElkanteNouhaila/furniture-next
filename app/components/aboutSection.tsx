@@ -24,7 +24,7 @@ export default function AboutSection() {
             <div>
               <span className="text-[#b58742] text-sm font-semibold tracking-wider uppercase">About Our Brand</span>
               <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mt-2">
-                Luxury Touch
+              Luxury<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">Touch</span>
               </h2>
             </div>
 

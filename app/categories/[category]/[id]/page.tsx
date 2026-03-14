@@ -293,76 +293,72 @@ export default function ProductPage({
         <div className="grid lg:grid-cols-2 gap-14 items-start">
 
           {/* ── Left: Image Gallery ──────────────────────────────────────── */}
-<div className="flex gap-4">
+        <div className="flex gap-4">
 
-{/* Thumbnails */}
-<div className="hidden sm:flex flex-col gap-3">
-  {gallery.map((src, i) => (
-    <button
-      key={i}
-      onClick={() => setActiveImage(i)}
-      className={`w-[72px] h-[72px] rounded-xl overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
-        activeImage === i
-          ? "border-[#b58742] shadow-md scale-105"
-          : "border-transparent hover:border-stone-300"
-      }`}
-    >
-      <Image
-        src={src!}
-        alt={`${product.name} view ${i + 1}`}
-        width={72}
-        height={72}
-        className="w-full h-full object-cover"
-      />
-    </button>
-  ))}
-</div>
+          {/* Thumbnails */}
+          <div className="hidden sm:flex flex-col gap-3">
+            {gallery.map((src, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveImage(i)}
+                className={`w-[72px] h-[72px] rounded-xl overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
+                  activeImage === i ? "border-[#b58742] shadow-md scale-105" : "border-transparent hover:border-stone-300"}`
+                }
+              >
+                <Image
+                  src={src!}
+                  alt={`${product.name} view ${i + 1}`}
+                  width={72}
+                  height={72}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
 
-{/* ✅ THIS wrapper was missing — restores correct JSX tree */}
-<div className="flex-1 relative">
+          <div className="flex-1 relative">
 
-  {/* Wishlist Button */}
-  <button
-    onClick={() => setWishlisted(!wishlisted)}
-    className={`absolute top-4 right-4 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all duration-200 ${
-      wishlisted
-        ? "bg-red-500 text-white scale-110"
-        : "bg-white text-stone-500 hover:text-red-500"
-    }`}
-  >
-    <FiHeart size={18} className={wishlisted ? "fill-white" : ""} />
-  </button>
+            {/* Wishlist Button */}
+            <button
+              onClick={() => setWishlisted(!wishlisted)}
+              className={`absolute top-4 right-4 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all duration-200 ${
+                wishlisted
+                ? "bg-red-500 text-white scale-110"
+                : "bg-white text-stone-500 hover:text-red-500"
+              }`}
+            >
+              <FiHeart size={18} className={wishlisted ? "fill-white" : ""} />
+            </button>
 
-  {/* Main Image */}
-  <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl aspect-square">
-    <Image
-      src={gallery[activeImage]!}
-      alt={product.name}
-      fill
-      className="object-cover transition-transform duration-500 hover:scale-105"
-    />
-  </div>
+            {/* Main Image */}
+            <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl aspect-square">
+              <Image
+                src={gallery[activeImage]!}
+                alt={product.name}
+                fill
+                className="object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
 
-  {/* Mobile dot indicators */}
-  <div className="flex sm:hidden justify-center gap-2 mt-3">
-    {gallery.map((_, i) => (
-      <button
-        key={i}
-        onClick={() => setActiveImage(i)}
-        className={`w-2 h-2 rounded-full transition-all ${
-          activeImage === i ? "bg-[#b58742] w-6" : "bg-stone-300"
-        }`}
-      />
-    ))}
-  </div>
+            {/* Mobile dot indicators */}
+            <div className="flex sm:hidden justify-center gap-2 mt-3">
+              {gallery.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveImage(i)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    activeImage === i ? "bg-[#b58742] w-6" : "bg-stone-300"
+                  }`}
+                />
+              ))}
+            </div>
 
-</div>
-{/* ✅ End wrapper */}
+          </div>
 
-</div>
+        </div>
 
 
-          {/* ── Right: Product Info ──────────────────────────────────────── */}
+        {/* ── Right: Product Info ──────────────────────────────────────── */}
           <div className="flex flex-col gap-7 lg:sticky lg:top-8">
 
             {/* Title & Rating */}

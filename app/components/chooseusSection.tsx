@@ -33,7 +33,7 @@ export default function WhyChooseUsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-4">
-            Why Choose Luxury Touch?
+            Why Choose Luxury<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">Touch</span>?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             We're committed to providing you with the best furniture shopping experience

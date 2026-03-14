@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              Luxury<span className="text-[#b58742]">Touch</span>
+            Luxury<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">Touch</span>
             </h3>
             <p className="text-gray-400 leading-relaxed">
               Make your space truly yours with our premium furniture collection.

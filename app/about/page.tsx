@@ -5,7 +5,7 @@ export default function AboutPage() {
     <main className="max-w-6xl mx-auto px-8 py-16">
 
       <h1 className="text-4xl font-bold mb-8 text-center">
-        About Luxury Touch
+        About Luxury<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">Touch</span>
       </h1>
 
       <div className="grid md:grid-cols-2 gap-10 items-center">
