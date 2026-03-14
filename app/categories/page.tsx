@@ -34,6 +34,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { categories } from "@/app/lib/products";
 import { FiArrowRight, FiGrid } from "react-icons/fi";
+import { products } from "@/app/lib/products";
 
 export default function ProductsPage() {
   const categoryList = Object.entries(categories);
@@ -63,9 +64,13 @@ export default function ProductsPage() {
           </p>
         </div>
 
-        {/* ── Category Grid ──────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-24">
-          {categoryList.map(([slug, category], index) => (
+                {/* ── Category Grid ──────────────────────────────────────────────── */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-24">
+        {categoryList.map(([slug, category], index) => {
+          const productArray = Object.values(products); 
+          const productCount = productArray.filter(p => p.category === slug).length;
+          return(
+
             <Link key={slug} href={`/categories/${slug}`} className="group block">
 
               <div className="relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-stone-100">
@@ -110,7 +115,7 @@ export default function ProductsPage() {
                       {category.name}
                     </p>
                     <p className="text-xs text-stone-400 mt-0.5">
-                      {category.count ?? 12}+ products
+                      {productCount} products
                     </p>
 
                   </div>
@@ -121,25 +126,10 @@ export default function ProductsPage() {
 
               </div>
             </Link>
-          ))}
+          );
+})}
 
-          {/* ── "View All" CTA Card ─────────────────────────────────────── */}
-          <Link href="/categories" className="group block">
-            <div className="relative h-full min-h-[320px] rounded-3xl overflow-hidden border-2 border-dashed border-stone-300 hover:border-[#b58742] bg-white hover:bg-amber-50 transition-all duration-300 flex flex-col items-center justify-center gap-4 p-8 text-center">
-              <div className="w-14 h-14 rounded-full bg-stone-100 group-hover:bg-[#b58742] flex items-center justify-center text-stone-400 group-hover:text-white transition-all duration-300 text-2xl">
-                +
-              </div>
-              <div>
-                <p className="font-bold text-stone-700 group-hover:text-[#b58742] transition-colors">
-                  Browse All
-                </p>
-                <p className="text-xs text-stone-400 mt-1">
-                  Discover more collections
-                </p>
-              </div>
-            </div>
-          </Link>
-
+          
         </div>
 
         {/* ── Bottom Banner ──────────────────────────────────────────────── */}

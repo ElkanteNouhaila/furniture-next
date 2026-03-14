@@ -2,18 +2,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { categories } from "@/app/lib/products";
 import { FiArrowRight, FiGrid } from "react-icons/fi";
+import { products } from "@/app/lib/products";
 
 export default function CategoriesSection() {
-  const categoryList = Object.entries(categories);
+  const allCategories = Object.entries(categories);
+  const categoryList = allCategories.slice(0, 3);
 
-  return (
+      return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* ── Page Header ────────────────────────────────────────────────── */}
           <div className="py-16 text-center">
           <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-5">
             <FiGrid size={12} />
-            {categoryList.length} Collections Available
+            {allCategories.length} Collections Available
           </div>
           <h1 className="text-5xl md:text-6xl font-black text-stone-900 tracking-tight mb-4">
             Shop by{" "}
@@ -29,7 +31,11 @@ export default function CategoriesSection() {
 
         {/* ── Category Grid ──────────────────────────────────────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-24">
-          {categoryList.map(([slug, category], index) => (
+        {categoryList.map(([slug, category], index) => {
+          const productArray = Object.values(products); 
+          const productCount = productArray.filter(p => p.category === slug).length;
+          return(
+
             <Link key={slug} href={`/categories/${slug}`} className="group block">
 
               <div className="relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-stone-100">
@@ -74,7 +80,7 @@ export default function CategoriesSection() {
                       {category.name}
                     </p>
                     <p className="text-xs text-stone-400 mt-0.5">
-                      {category.count ?? 12}+ products
+                      {productCount} products
                     </p>
 
                   </div>
@@ -85,7 +91,8 @@ export default function CategoriesSection() {
 
               </div>
             </Link>
-          ))}
+          );
+})}
 
           {/* ── "View All" CTA Card ─────────────────────────────────────── */}
           <Link href="/categories" className="group block">
@@ -103,7 +110,7 @@ export default function CategoriesSection() {
               </div>
             </div>
           </Link>
-          </div>
+        </div>
     </div>
   );
 }
