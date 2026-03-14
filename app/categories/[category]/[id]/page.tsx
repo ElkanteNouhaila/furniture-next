@@ -361,28 +361,14 @@ export default function ProductPage({
         {/* ── Right: Product Info ──────────────────────────────────────── */}
           <div className="flex flex-col gap-7 lg:sticky lg:top-8">
 
-            {/* Title & Rating */}
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-3">
-                <Badge label="In Stock" variant="green" />
                 <Badge label="New Arrival" variant="gold" />
               </div>
 
               <h1 className="text-3xl md:text-4xl font-extrabold text-stone-900 leading-tight mb-4">
                 {product.name}
               </h1>
-
-              {product.rating && (
-                <div className="flex items-center gap-3">
-                  <StarRating rating={product.rating} />
-                  <span className="text-sm font-semibold text-stone-700">
-                    {product.rating}
-                  </span>
-                  <span className="text-sm text-stone-400">
-                    (128 verified reviews)
-                  </span>
-                </div>
-              )}
             </div>
 
             {/* Divider */}
@@ -393,7 +379,7 @@ export default function ProductPage({
             {/* Tab Switcher */}
             <div>
               <div className="flex border-b border-stone-200 gap-6">
-                {(["description", "specs", "reviews"] as const).map((tab) => (
+                {(["specs", "description"] as const).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -419,9 +405,7 @@ export default function ProductPage({
                   <ul className="space-y-2">
                     {[
                       ["Material", "Premium Grade"],
-                      ["Weight", "1.2 kg"],
                       ["Dimensions", "30 × 20 × 10 cm"],
-                      ["Warranty", "2 Years"],
                     ].map(([k, v]) => (
                       <li key={k} className="flex gap-3">
                         <span className="text-stone-400 w-28 flex-shrink-0">{k}</span>
@@ -430,31 +414,7 @@ export default function ProductPage({
                     ))}
                   </ul>
                 )}
-                {activeTab === "reviews" && (
-                  <div className="flex items-center gap-4">
-                    <div className="text-center">
-                      <p className="text-5xl font-black text-stone-800">
-                        {product.rating ?? "5.0"}
-                      </p>
-                      <StarRating rating={product.rating ?? 5} />
-                      <p className="text-xs text-stone-400 mt-1">128 reviews</p>
-                    </div>
-                    <div className="flex-1 space-y-1.5">
-                      {[5, 4, 3, 2, 1].map((s) => (
-                        <div key={s} className="flex items-center gap-2 text-xs">
-                          <span className="text-stone-500 w-3">{s}</span>
-                          <FiStar className="text-amber-400 text-xs" />
-                          <div className="flex-1 bg-stone-200 rounded-full h-1.5 overflow-hidden">
-                            <div
-                              className="h-full bg-amber-400 rounded-full"
-                              style={{ width: `${[72, 18, 6, 3, 1][5 - s]}%` }}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                
               </div>
             </div>
 
@@ -479,7 +439,6 @@ export default function ProductPage({
                     <FiPlus size={14} />
                   </button>
                 </div>
-                <span className="text-xs text-stone-400">Only 12 left</span>
               </div>
 
               <div className="flex gap-3">
@@ -507,18 +466,18 @@ export default function ProductPage({
               {[
                 {
                   icon: <FiTruck size={20} />,
-                  title: "Free Delivery",
-                  sub: "Orders over $75",
+                  title: "Fast Delivery",
+                  sub: "",
                 },
                 {
                   icon: <FiRefreshCw size={20} />,
-                  title: "30-Day Returns",
-                  sub: "Hassle-free policy",
+                  title: "After-sales service",
+                  sub: "",
                 },
                 {
                   icon: <FiShield size={20} />,
                   title: "Secure Pay",
-                  sub: "256-bit encryption",
+                  sub: "",
                 },
               ].map(({ icon, title, sub }) => (
                 <div
