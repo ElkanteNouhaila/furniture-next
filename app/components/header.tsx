@@ -23,8 +23,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
 
-        <Link href="/" className={`${playfair.className} text-2xl font-semibold`}>
-          Luxury<span className="text-[#b58742]">Touch</span>
+        <Link href="/" className={`${playfair.className} text-2xl font-semibold `}>
+          Luxury<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">Touch</span>
         </Link>
 
         {/* Desktop Nav */}
