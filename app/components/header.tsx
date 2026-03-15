@@ -147,33 +147,35 @@ const poppins = Poppins({
 
 export default function Header() {
   const pathname = usePathname();
-  const { cart } = useCart(); // get cart
+  const { cart } = useCart();
   const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // separate states
+  const [cartOpen, setCartOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+  const toggleCart = () => setCartOpen((prev) => !prev);
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   return (
     <header className="sticky top-0 z-50 bg-white backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-
         {/* Logo */}
         <Link href="/" className={`${playfair.className} text-2xl font-semibold`}>
           Luxury<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">Touch</span>
         </Link>
 
-        {/* Desktop Nav + Cart */}
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <nav className={`flex items-center gap-8 text-lg ${poppins.className}`}>
-            <Link href="/" className={`hover:text-[#b58742] ${pathname === "/" ? "text-[#b58742]" : ""}`}>HOME</Link>
-            <Link href="/categories" className={`hover:text-[#b58742] ${pathname === "/categories" ? "text-[#b58742]" : ""}`}>PRODUCTS</Link>
-            <Link href="/contact" className={`hover:text-[#b58742] ${pathname === "/contact" ? "text-[#b58742]" : ""}`}>CONTACT</Link>
-            <Link href="/about" className={`hover:text-[#b58742] ${pathname === "/about" ? "text-[#b58742]" : ""}`}>ABOUT</Link>
+            <Link href="/" className={`${pathname === "/" ? "text-[#b58742]" : "hover:text-[#b58742]"}`}>HOME</Link>
+            <Link href="/categories" className={`${pathname === "/categories" ? "text-[#b58742]" : "hover:text-[#b58742]"}`}>PRODUCTS</Link>
+            <Link href="/contact" className={`${pathname === "/contact" ? "text-[#b58742]" : "hover:text-[#b58742]"}`}>CONTACT</Link>
+            <Link href="/about" className={`${pathname === "/about" ? "text-[#b58742]" : "hover:text-[#b58742]"}`}>ABOUT</Link>
           </nav>
 
           {/* Cart Icon */}
-          <button onClick={toggleSidebar} className="hover:text-[#b58742] relative text-2xl p-2">
+          <button onClick={toggleCart} className="relative text-2xl p-2">
             <FiShoppingCart size={24} />
             {totalQty > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -183,9 +185,10 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu + Cart */}
+        {/* Mobile Icons */}
         <div className="flex items-center gap-4 md:hidden">
-          <button onClick={toggleSidebar} className="relative text-2xl p-2">
+          {/* Cart */}
+          <button onClick={toggleCart} className="relative text-2xl p-2">
             <FiShoppingCart size={24} />
             {totalQty > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
@@ -194,14 +197,27 @@ export default function Header() {
             )}
           </button>
 
-          <button className="text-2xl" onClick={() => setSidebarOpen(prev => !prev)}>
+          {/* Hamburger */}
+          <button className="text-2xl" onClick={toggleMobileMenu}>
             ☰
           </button>
         </div>
       </div>
 
+      {/* Mobile Nav */}
+      {mobileMenuOpen && (
+        <nav className={`md:hidden bg-white border-t border-border ${poppins.className}`}>
+          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+            <Link href="/" className={`${pathname === "/" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>HOME</Link>
+            <Link href="/categories" className={`${pathname === "/categories" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>PRODUCTS</Link>
+            <Link href="/contact" className={`${pathname === "/contact" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
+            <Link href="/about" className={`${pathname === "/about" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>ABOUT</Link>
+          </div>
+        </nav>
+      )}
+
       {/* Cart Sidebar */}
-      <CartSidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+      <CartSidebar isOpen={cartOpen} toggleSidebar={toggleCart} />
     </header>
   );
 }
