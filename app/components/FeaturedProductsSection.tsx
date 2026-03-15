@@ -47,9 +47,7 @@ export default function FeaturedProductsSection() {
                     {product.category}
                   </p>
 
-                  <p className="text-[#b58742] font-semibold mt-3">
-                    ⭐ {product.rating}
-                  </p>
+                
                 </div>
 
               </div>
