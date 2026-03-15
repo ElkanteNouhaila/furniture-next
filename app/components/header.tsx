@@ -125,15 +125,15 @@
 //   );
 // }
 
-
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Playfair_Display, Poppins } from "next/font/google";
 import { useState } from "react";
-import CartSidebar from "./cartSidebar";
 import { useCart } from "@/app/context/cartContext";
+import { FiShoppingCart } from "react-icons/fi";
+import CartSidebar from "./cartSidebar";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -147,9 +147,10 @@ const poppins = Poppins({
 
 export default function Header() {
   const pathname = usePathname();
-  const [sidebarOpen, setSidebarOpen] = useState(false); // controls CartSidebar
-  const { cart } = useCart();
+  const { cart } = useCart(); // get cart
   const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -159,10 +160,7 @@ export default function Header() {
 
         {/* Logo */}
         <Link href="/" className={`${playfair.className} text-2xl font-semibold`}>
-          Luxury
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">
-            Touch
-          </span>
+          Luxury<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b58742] to-amber-400">Touch</span>
         </Link>
 
         {/* Desktop Nav + Cart */}
@@ -174,12 +172,9 @@ export default function Header() {
             <Link href="/about" className={`hover:text-[#b58742] ${pathname === "/about" ? "text-[#b58742]" : ""}`}>ABOUT</Link>
           </nav>
 
-          {/* Cart Icon (opens sidebar) */}
-          <button
-            onClick={toggleSidebar}
-            className="relative text-2xl p-2"
-          >
-            🛒
+          {/* Cart Icon */}
+          <button onClick={toggleSidebar} className="hover:text-[#b58742] relative text-2xl p-2">
+            <FiShoppingCart size={24} />
             {totalQty > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                 {totalQty}
@@ -188,10 +183,10 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu + Cart */}
         <div className="flex items-center gap-4 md:hidden">
           <button onClick={toggleSidebar} className="relative text-2xl p-2">
-            🛒
+            <FiShoppingCart size={24} />
             {totalQty > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                 {totalQty}
@@ -199,7 +194,7 @@ export default function Header() {
             )}
           </button>
 
-          <button className="text-2xl" onClick={() => setSidebarOpen((prev) => !prev)}>
+          <button className="text-2xl" onClick={() => setSidebarOpen(prev => !prev)}>
             ☰
           </button>
         </div>
