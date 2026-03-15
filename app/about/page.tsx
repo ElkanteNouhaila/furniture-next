@@ -1,29 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiAward, FiHeart, FiPackage, FiUsers } from "react-icons/fi";
+import { FiCoffee, FiStar, FiTarget } from "react-icons/fi";
+
 
 const stats = [
   { icon: <FiUsers size={22} />,   value: "5,000+",  label: "Happy Clients"       },
-  { icon: <FiPackage size={22} />, value: "1,200+",  label: "Products Delivered"  },
-  { icon: <FiAward size={22} />,   value: "8+",      label: "Years of Excellence" },
+  { icon: <FiPackage size={22} />, value: "5,000+",  label: "Products Delivered"  },
+  { icon: <FiAward size={22} />,   value: "15+",      label: "Years of Excellence" },
   { icon: <FiHeart size={22} />,   value: "100%",    label: "Satisfaction Rate"   },
 ];
 
 const values = [
   {
     title: "Premium Craftsmanship",
-    desc:  "Every piece is built with meticulous attention to detail using only the finest materials.",
-    icon:  "🪵",
+    desc: "Every piece is built with meticulous attention to detail using only the finest materials.",
+    icon: <FiCoffee size={32} className="text-[#b58742]" />,
   },
   {
     title: "Timeless Design",
-    desc:  "We blend modern aesthetics with classic elegance to create furniture that never goes out of style.",
-    icon:  "✨",
+    desc: "We blend modern aesthetics with classic elegance to create furniture that never goes out of style.",
+    icon: <FiStar size={32} className="text-[#b58742]" />,
   },
   {
     title: "Your Vision, Our Mission",
-    desc:  "We work with you to transform your space into a reflection of your personality and lifestyle.",
-    icon:  "🎯",
+    desc: "We work with you to transform your space into a reflection of your personality and lifestyle.",
+    icon: <FiTarget size={32} className="text-[#b58742]" />,
   },
 ];
 
@@ -50,7 +52,7 @@ export default function AboutPage() {
             </h1>
             <p className="text-stone-300 text-lg leading-relaxed">
               Luxury Touch By El Kante — crafting exceptional living spaces
-              with premium furniture, blinds, and curtains since 2016.
+              with premium furniture, blinds, and curtains since 1999.
             </p>
           </div>
         </div>
@@ -94,7 +96,7 @@ export default function AboutPage() {
               {/* Gold badge */}
               <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-3 shadow-xl">
                 <p className="text-xs text-stone-400 font-medium">Est.</p>
-                <p className="text-2xl font-black text-[#b58742]">2016</p>
+                <p className="text-2xl font-black text-[#b58742]">1999</p>
               </div>
             </div>
           </div>
