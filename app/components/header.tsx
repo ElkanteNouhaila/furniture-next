@@ -156,6 +156,7 @@ export default function Header() {
 
   const toggleCart = () => setCartOpen((prev) => !prev);
   const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white backdrop-blur-md border-b border-border">
@@ -198,23 +199,40 @@ export default function Header() {
           </button>
 
           {/* Hamburger */}
-          <button className="text-2xl" onClick={toggleMobileMenu}>
-            ☰
-          </button>
+          <button
+  className="relative w-8 h-6 flex flex-col justify-between items-center md:hidden"
+  onClick={() => setIsMenuOpen(!isMenuOpen)}
+>
+  <span
+    className={`h-1 w-full bg-black rounded-lg transform transition duration-300 ${
+      isMenuOpen ? "rotate-45 translate-y-2" : ""
+    }`}
+  />
+  <span
+    className={`h-1 w-full bg-black rounded-lg transition-all duration-300 ${
+      isMenuOpen ? "opacity-0" : "opacity-100"
+    }`}
+  />
+  <span
+    className={`h-1 w-full bg-black rounded-lg transform transition duration-300 ${
+      isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+    }`}
+  />
+</button>
         </div>
       </div>
 
       {/* Mobile Nav */}
-      {mobileMenuOpen && (
-        <nav className={`md:hidden bg-white border-t border-border ${poppins.className}`}>
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            <Link href="/" className={`${pathname === "/" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>HOME</Link>
-            <Link href="/categories" className={`${pathname === "/categories" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>PRODUCTS</Link>
-            <Link href="/contact" className={`${pathname === "/contact" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>CONTACT</Link>
-            <Link href="/about" className={`${pathname === "/about" ? "text-[#b58742]" : "hover:text-[#b58742]"}`} onClick={() => setMobileMenuOpen(false)}>ABOUT</Link>
-          </div>
-        </nav>
-      )}
+      <nav
+  className={`fixed top-0 left-0 w-full h-full bg-white z-40 flex flex-col items-center justify-center gap-6 transition-transform duration-500 ${
+    isMenuOpen ? "translate-x-0" : "-translate-x-full"
+  }`}
+>
+  <Link href="/" onClick={() => setIsMenuOpen(false)}>HOME</Link>
+  <Link href="/categories" onClick={() => setIsMenuOpen(false)}>PRODUCTS</Link>
+  <Link href="/contact" onClick={() => setIsMenuOpen(false)}>CONTACT</Link>
+  <Link href="/about" onClick={() => setIsMenuOpen(false)}>ABOUT</Link>
+</nav>
 
       {/* Cart Sidebar */}
       <CartSidebar isOpen={cartOpen} toggleSidebar={toggleCart} />
