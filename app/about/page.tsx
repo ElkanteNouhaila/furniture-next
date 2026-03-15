@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiAward, FiHeart, FiPackage, FiUsers } from "react-icons/fi";
-// import { FiCoffee, FiStar, FiTarget } from "react-icons/fi";
 import { FiTool, FiClock, FiTarget } from "react-icons/fi";
 
 
@@ -12,23 +11,7 @@ const stats = [
   { icon: <FiHeart size={22} />,   value: "100%",    label: "Satisfaction Rate"   },
 ];
 
-// const values = [
-//   {
-//     title: "Premium Craftsmanship",
-//     desc: "Every piece is built with meticulous attention to detail using only the finest materials.",
-//     icon: <FiCoffee size={32} className="text-[#b58742]" />,
-//   },
-//   {
-//     title: "Timeless Design",
-//     desc: "We blend modern aesthetics with classic elegance to create furniture that never goes out of style.",
-//     icon: <FiStar size={32} className="text-[#b58742]" />,
-//   },
-//   {
-//     title: "Your Vision, Our Mission",
-//     desc: "We work with you to transform your space into a reflection of your personality and lifestyle.",
-//     icon: <FiTarget size={32} className="text-[#b58742]" />,
-//   },
-// ];
+
 
 const values = [
   {
@@ -161,35 +144,6 @@ export default function AboutPage() {
       </section>
 
       {/* ── Values Section ──────────────────────────────────────────────── */}
-      {/* <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className="text-[#b58742] text-xs font-bold uppercase tracking-widest">
-              What We Stand For
-            </span>
-            <h2 className="text-4xl font-black text-stone-900 mt-2">
-              Our Core Values
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {values.map(({ title, desc, icon }) => (
-              <div
-                key={title}
-                className="group bg-stone-50 hover:bg-gradient-to-br hover:from-stone-900 hover:to-stone-800 rounded-3xl p-8 transition-all duration-500 border border-stone-100 hover:border-transparent hover:shadow-2xl hover:-translate-y-1"
-              >
-                <div className="text-4xl mb-5">{icon}</div>
-                <h3 className="text-lg font-bold text-stone-900 group-hover:text-white mb-3 transition-colors">
-                  {title}
-                </h3>
-                <p className="text-stone-500 group-hover:text-stone-300 text-sm leading-relaxed transition-colors">
-                  {desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
       <section className="bg-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
