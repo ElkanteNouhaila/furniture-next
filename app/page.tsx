@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Hero from "./components/hero";
 import CategoriesSection from "./components/categoriesSection";
 import AboutSection from "./components/aboutSection";
