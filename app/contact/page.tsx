@@ -1,63 +1,3 @@
-// import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
-// import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-
-// export default function ContactPage() {
-//   return (
-//     <main className="p-8 max-w-3xl mx-auto text-center">
-//       <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
-
-//       <p className="mb-8 text-gray-600">
-//         Feel free to contact us for any questions.
-//       </p>
-
-//       <div className="flex flex-col gap-6 text-lg">
-
-//         <div className="flex items-center justify-center gap-3">
-//         <a href="tel:+212644072535" className="flex items-center gap-3 hover:text-red-700">
-//             <FiPhone size={22} />
-//                 +212 644 072 535
-//         </a>
-//         </div>
-
-//         <div className="flex items-center justify-center gap-3">
-//             <a href="mailto:nouhailaelkante2@gmail.com" className="flex items-center gap-3 hover:text-red-700">
-//                 <FiMail size={22} /> nouhailaelkante2@gmail.com
-//             </a>
-//         </div>
-
-//         <div className="flex items-center justify-center gap-3">
-//           <FiMapPin size={22} />
-//           <span>Casablanca, Morocco</span>
-//         </div>
-
-//         <div className="flex items-center justify-center gap-3">
-//             <a
-//                 href="https://www.instagram.com/elkante_mohamed?igsh=cGt2aW1mNWcweDEw"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 className="flex items-center gap-3 hover:text-pink-700"
-//             >
-//                 <FaInstagram size={22} /> Instagram
-//             </a>
-
-//         </div>
-
-//         <div className="flex items-center justify-center gap-3">
-//             <a
-//                 href="https://wa.me/212644072535"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//                 className="flex items-center gap-3 hover:text-green-700"
-//             >
-//                 <FaWhatsapp size={22} /> WhatsApp
-//             </a>
-//         </div>
-
-//       </div>
-//     </main>
-//   );
-// }
-
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -147,6 +87,7 @@ export default function ContactPage() {
       setSubmitted(true);
       reset();
       // setTimeout(() => setSubmitted(false), 5000);
+      console.log(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
     } catch (err) {
       console.error(err);
     }
