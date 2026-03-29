@@ -76,7 +76,6 @@ export default function ContactPage() {
   const [lastPhone, setLastPhone] = useState("");
 
   const onSubmit = async (data: FormData) => {
-    console.log(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
