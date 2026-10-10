@@ -1,0 +1,164 @@
+// "use client";
+
+// import { useParams } from "next/navigation";
+// import { products } from "@/app/lib/products";
+// import ProductCard from "@/app/components/ProductCard";
+// import Link from "next/link";
+
+// export default function CategoryPage() {
+//   const params = useParams();
+//   const categorySlug = Array.isArray(params.category) ? params.category[0] : params.category; 
+
+//   // Filter products using lowercase for matching
+//   const categoryProducts = Object.values(products).filter(
+//     (p) => p.category.toLowerCase() === categorySlug?.toLowerCase()
+//   );
+
+//   if (!categoryProducts.length) {
+//     return (
+//       <main className="min-h-screen flex items-center justify-center">
+//         <div className="text-center">
+//           <p className="text-2xl text-gray-500 mb-4">No products found in this category</p>
+//           <Link href="./id/page.tsx" className="text-[#b58742] hover:underline">
+//             ← Back to categories
+//           </Link>
+//         </div>
+//       </main>
+//     );
+//   }
+
+//   // Use the first product's category for proper display name
+//   const displayName = categoryProducts[0]?.category || categorySlug;
+//   const displayNameText = (displayName ?? "").toString();
+
+//   return (
+//     <main className="min-h-screen bg-gradient-to-b from-stone-50 to-white">
+//       {/* Hero Section */}
+//       <section className="bg-gradient-to-r from-stone-700 to-stone-900 text-white py-16">
+//         <div className="max-w-6xl mx-auto px-6">
+//           <h1 className="text-4xl md:text-5xl font-bold mb-2">{displayNameText}</h1>
+//           <p className="text-stone-200">Explore our premium collection of {displayNameText.toLowerCase()}</p>
+//         </div>
+//       </section>
+
+//       {/* Products Grid */}
+//       <section className="max-w-6xl mx-auto px-6 py-16">
+//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+//           {categoryProducts.map((product) => (
+//             <ProductCard 
+//               key={product.id}
+//               slug={`${categorySlug}/${product.id}`}
+//               product={product}
+//             />
+//           ))}
+//         </div>
+//       </section>
+//     </main>
+//   );
+// }
+
+
+"use client";
+
+import { useParams } from "next/navigation";
+import { products } from "@/app/lib/products";
+import ProductCard from "@/app/components/ProductCard";
+import Link from "next/link";
+import { FiArrowLeft } from "react-icons/fi";
+
+export default function CategoryPage() {
+  const params = useParams();
+  const categorySlug = Array.isArray(params.category)
+    ? params.category[0]
+    : params.category;
+
+  const categoryProducts = Object.values(products).filter(
+    (product) =>
+      product.category.toLowerCase() === categorySlug?.toLowerCase()
+  );
+
+  if (!categoryProducts.length) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-stone-50 px-4 text-stone-900 dark:bg-stone-950 dark:text-stone-100">
+        <div className="text-center">
+          <p className="mb-4 text-2xl font-semibold">
+            No products found in this category
+          </p>
+
+          <Link
+            href="/categories"
+            className="inline-flex items-center gap-2 text-[#b58742] transition-colors hover:text-amber-600"
+          >
+            <FiArrowLeft size={16} />
+            Back to categories
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
+  const displayName = categoryProducts[0]?.category || categorySlug;
+  const displayNameText = String(displayName ?? "");
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-stone-50 via-white to-stone-100 text-stone-900 transition-colors duration-300 dark:from-stone-900 dark:via-stone-950 dark:to-stone-800 dark:text-stone-100">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-stone-700 via-stone-800 to-stone-900 py-16 text-white dark:from-stone-900 dark:via-stone-900 dark:to-[#211f1b] md:py-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#b58742]/10 to-transparent" />
+
+        <div className="relative mx-auto max-w-6xl px-6">
+          <Link
+            href="/categories"
+            className="mb-8 inline-flex items-center gap-2 text-sm text-stone-300 transition-colors hover:text-white"
+          >
+            <FiArrowLeft size={16} />
+            All categories
+          </Link>
+
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-amber-400">
+            Luxury Touch Collection
+          </p>
+
+          <h1 className="mb-3 text-4xl font-semibold tracking-tight md:text-5xl">
+            {displayNameText}
+          </h1>
+
+          
+
+          <p className="leading-7 text-stone-300 sm:whitespace-nowrap">
+            Explore our premium collection of{" "}
+            {displayNameText.toLowerCase()}, selected to bring timeless elegance and comfort to your home.
+          </p>
+
+
+
+          <div className="mt-6 h-px w-16 bg-[#b58742]" />
+        </div>
+      </section>
+
+      {/* Products Grid */}
+      <section className="mx-auto max-w-6xl px-6 py-12 md:py-16">
+        <div className="mb-8 flex items-center justify-between border-b border-stone-200 pb-4 dark:border-stone-800">
+          <h2 className="text-lg font-medium text-stone-800 dark:text-stone-100">
+            Explore the collection
+          </h2>
+
+          <span className="text-sm text-stone-500 dark:text-stone-400">
+            {categoryProducts.length}{" "}
+            {categoryProducts.length === 1 ? "product" : "products"}
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {categoryProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              slug={`${categorySlug}/${product.id}`}
+              product={product}
+            />
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}

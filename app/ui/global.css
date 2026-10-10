@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================
+   Luxury Touch — Global Foundation
+================================ */
+
+:root {
+  color-scheme: light;
+  --page-bg: #faf9f6;
+  --surface: #ffffff;
+  --surface-soft: #f5f3ee;
+  --text-primary: #292722;
+  --text-secondary: #706c63;
+  --border: #e9e5dc;
+  --gold: #b58742;
+  --gold-hover: #9e7436;
+}
+
+html.dark {
+  color-scheme: dark;
+  --page-bg: #0c0a09;
+  --surface: #1c1917;
+  --surface-soft: #292524;
+  --text-primary: #f5f5f4;
+  --text-secondary: #a8a29e;
+  --border: #44403c;
+  --gold: #b58742;
+  --gold-hover: #d4aa68;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+html {
+  background-color: var(--page-bg);
+  color-scheme: light;
+}
+
+html.dark {
+  background-color: var(--page-bg);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+/* Number inputs */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Smooth theme transitions for common surfaces */
+body,
+header,
+footer,
+section,
+article,
+aside,
+nav,
+input,
+textarea,
+select {
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease;
+}
+
+/* Consistent dark-mode surfaces */
+html.dark .bg-white {
+  background-color: var(--surface);
+}
+
+html.dark .bg-stone-50,
+html.dark .bg-stone-50\/70,
+html.dark .bg-gray-50 {
+  background-color: var(--page-bg);
+}
+
+html.dark .bg-stone-100,
+html.dark .bg-gray-100 {
+  background-color: var(--surface-soft);
+}
+
+html.dark .bg-stone-200,
+html.dark .bg-gray-200 {
+  background-color: #34302d;
+}
+
+html.dark .bg-stone-300,
+html.dark .bg-gray-300 {
+  background-color: #44403c;
+}
+
+/* Soft semantic backgrounds */
+html.dark .bg-amber-50 {
+  background-color: #302719;
+}
+
+html.dark .bg-red-50 {
+  background-color: #321f1d;
+}
+
+html.dark .bg-red-100 {
+  background-color: #462724;
+}
+
+html.dark .bg-green-50 {
+  background-color: #1e2d23;
+}
+
+/* Typography */
+html.dark .text-stone-900,
+html.dark .text-gray-900,
+html.dark .text-stone-800,
+html.dark .text-gray-800 {
+  color: var(--text-primary);
+}
+
+html.dark .text-stone-700,
+html.dark .text-gray-700 {
+  color: #ded9cf;
+}
+
+html.dark .text-stone-600,
+html.dark .text-gray-600 {
+  color: #c4beb3;
+}
+
+html.dark .text-stone-500,
+html.dark .text-gray-500 {
+  color: var(--text-secondary);
+}
+
+html.dark .text-stone-400,
+html.dark .text-gray-400 {
+  color: #a49d91;
+}
+
+html.dark .text-stone-300,
+html.dark .text-gray-300 {
+  color: #d0cabf;
+}
+
+html.dark .text-amber-700,
+html.dark .text-amber-800 {
+  color: var(--gold);
+}
+
+html.dark .text-red-600,
+html.dark .text-red-700 {
+  color: #f3a5a0;
+}
+
+/* Borders */
+html.dark .border-stone-50,
+html.dark .border-gray-50 {
+  border-color: #292720;
+}
+
+html.dark .border-stone-100,
+html.dark .border-gray-100 {
+  border-color: var(--border);
+}
+
+html.dark .border-stone-200,
+html.dark .border-gray-200 {
+  border-color: #454137;
+}
+
+html.dark .border-stone-300,
+html.dark .border-gray-300 {
+  border-color: #514b3f;
+}
+
+html.dark .border-amber-200 {
+  border-color: #66502d;
+}
+
+html.dark .border-red-200 {
+  border-color: #713c37;
+}
+
+html.dark .divide-stone-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--border);
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  border-color: var(--border);
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  color-scheme: dark;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border-color: #514b3f;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #a49d91;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--gold);
+  outline-color: var(--gold);
+}
+
+/* Hover states */
+html.dark [class~="hover:bg-stone-50"]:hover,
+html.dark [class~="hover:bg-gray-50"]:hover {
+  background-color: #302d26;
+}
+
+html.dark [class~="hover:bg-stone-100"]:hover,
+html.dark [class~="hover:bg-gray-100"]:hover {
+  background-color: #37332b;
+}
+
+html.dark [class~="focus:bg-white"]:focus {
+  background-color: var(--surface);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
